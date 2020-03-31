@@ -109,7 +109,7 @@ if sore_throat not in ['1', '2']:
     raise Exception('Invalid Input')
 print()
 
-print("Q8. when did the symptoms start? (Enter number of days)")
+print("Q8. When did the symptoms start? (Enter number of days)")
 symptoms_start = int(input(''))
 
 def question_set_2():
@@ -161,18 +161,12 @@ elif (contact_with_conf_case == '1' and dry_cough == '1') or (contact_with_conf_
 elif (location in ['Lagos', 'Abuja', 'Oyo'] and dry_cough == '1') or (location in ['Lagos', 'Abuja', 'Oyo'] and diff_in_brth == '1') or (location in ['Lagos', 'Abuja', 'Oyo'] and fever == '1'):
     print(high_risk_message)
 
-elif (travel == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2', fatigue == '2', sore_throat == '2'):
-    print(medium_risk_message)
-elif (contact_with_conf_case == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2'):
-    print(medium_risk_message)
-elif individual_sick == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2':
-    print(medium_risk_message)
-elif ((contact_with_conf_case == '3' and dry_cough == '1') or (contact_with_conf_case == '3' and diff_in_brth == '1') or (contact_with_conf_case == '3'
-    and fever == '1') or (contact_with_nig_arrival  == '3' and dry_cough == '1') or (contact_with_nig_arrival  == '3' and diff_in_brth == '1'),
+if ((travel == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2', fatigue == '2', sore_throat == '2') or
+        (contact_with_conf_case == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2') or
+        (individual_sick == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2')
+    or (contact_with_conf_case == '3' and dry_cough == '1') or (contact_with_conf_case == '3' and diff_in_brth == '1') or (contact_with_conf_case == '3'
+and fever == '1') or (contact_with_nig_arrival  == '3' and dry_cough == '1') or (contact_with_nig_arrival  == '3' and diff_in_brth == '1') or
     (contact_with_nig_arrival  == '3' and fever == '1')):
-    print(medium_risk_message)
-elif((location not in ['Lagos', 'Abuja', 'Oyo'] and dry_cough == '1') or (location not in ['Lagos', 'Abuja', 'Oyo'] and diff_in_brth == '1')
-    or (location not in ['Lagos', 'Abuja', 'Oyo'] and fever == '1')):
     print(medium_risk_message)
 
 else:
