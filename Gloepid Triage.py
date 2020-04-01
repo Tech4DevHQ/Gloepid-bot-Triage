@@ -38,7 +38,7 @@ state_list = ["Abia", "Abuja", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bay
 location = str(input('')).title()
 assert location in state_list, "Invalid State"
 
-travel,contact_with_conf_case,contact_with_nig_arrival,individual_sick = 0,0,0,0
+travel,contact_with_conf_case,contact_with_nig_arrival,individual_sick, self_isolating, public_space = 0,0,0,0,0,0
 
 def question_set_1():
     print()
@@ -145,7 +145,7 @@ print("-"*100)
 low_risk_message = ("You seem to be doing fine at the moment. But stay alert and practice social distancing.\n"
 "You can call a doctor if you have any unrelated health issues or questions.\n"
 "Add Link to Gloepid mobile app download,  self-isolation guide, subscribe to NCDC WhatsApp bot,\n"
-"invite others to take the test\n")
+"invite others to take the test")
 
 medium_risk_message = ("You may have been exposed. Please self isolate and monitor your health status,\n"
 "if there are any changes to your symptoms, please call a doctor or take the assessment test again\n"
