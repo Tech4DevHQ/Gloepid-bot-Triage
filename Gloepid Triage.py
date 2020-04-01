@@ -38,6 +38,8 @@ state_list = ["Abia", "Abuja", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bay
 location = str(input('')).title()
 assert location in state_list, "Invalid State"
 
+travel,contact_with_conf_case,contact_with_nig_arrival,individual_sick = 0,0,0,0
+
 def question_set_1():
     print()
     print("Q4. Have you travelled outside the country within the last 14 days? \n"
@@ -108,26 +110,28 @@ sore_throat = str(input(''))
 if sore_throat not in ['1', '2']:
     raise Exception('Invalid Input')
 print()
+if dry_cough == '1' or fever == '1' or diff_in_brth == '1' or fatigue == '1' or sore_throat == '1':
+    print("Q8. When did the symptoms start? (Enter number of days)")
+    symptoms_start = int(input(''))
 
-print("Q8. When did the symptoms start? (Enter number of days)")
-symptoms_start = int(input(''))
-
-def question_set_2():
-    print()
-    print("Have you been self-isolating? \n"
-          "Enter 1 for Yes or 2 for No")
-    global self_isolating
-    self_isolating = str(input(''))
-    if self_isolating == '2':
-        print("Have you visited any public space since you first started to notice symptoms? \n"
+    def question_set_2():
+        print()
+        print("Have you been self-isolating? \n"
               "Enter 1 for Yes or 2 for No")
-        global public_space
-        public_space = str(input(''))
-    elif self_isolating == '1':
-        return
-    else:
-        raise Exception('Invalid Input')
-question_set_2()
+        global self_isolating
+        self_isolating = str(input(''))
+        if self_isolating == '2':
+            print("Have you visited any public space since you first started to notice symptoms? \n"
+                  "Enter 1 for Yes or 2 for No")
+            global public_space
+            public_space = str(input(''))
+        elif self_isolating == '1':
+            return
+        else:
+            raise Exception('Invalid Input')
+    question_set_2()
+else:
+    pass
 
 print()
 print("Kindly provide your phone number and contact address")
@@ -154,20 +158,18 @@ high_risk_message = ("Please be patient and wait for an NCDC rep to contact you.
 "- Self-isolate insert self-isolation guide\n"
 "- Wait for healthcare services to contact you for further information and next steps")
 
-if (travel == '1' and dry_cough == '1') or (travel =='1' and diff_in_brth == '1') or (travel =='1' and fever == '1'):
-    print(high_risk_message)
-elif (contact_with_conf_case == '1' and dry_cough == '1') or (contact_with_conf_case =='1' and diff_in_brth == '1') or (contact_with_conf_case =='1'and fever == '1'):
-    print(high_risk_message)
-elif (location in ['Lagos', 'Abuja', 'Oyo'] and dry_cough == '1') or (location in ['Lagos', 'Abuja', 'Oyo'] and diff_in_brth == '1') or (location in ['Lagos', 'Abuja', 'Oyo'] and fever == '1'):
+if ((travel == '1' and dry_cough == '1') or (travel =='1' and diff_in_brth == '1') or (travel =='1' and fever == '1') or
+    (contact_with_conf_case == '1' and dry_cough == '1') or (contact_with_conf_case =='1' and diff_in_brth == '1') or (contact_with_conf_case =='1'and fever == '1') or
+    (contact_with_conf_case == '1' and dry_cough == '1') or (contact_with_conf_case =='1' and diff_in_brth == '1') or (contact_with_conf_case =='1'and fever == '1')):
     print(high_risk_message)
 
-if ((travel == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2', fatigue == '2', sore_throat == '2') or
-        (contact_with_conf_case == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2') or
-        (individual_sick == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2')
-    or (contact_with_conf_case == '3' and dry_cough == '1') or (contact_with_conf_case == '3' and diff_in_brth == '1') or (contact_with_conf_case == '3'
-and fever == '1') or (contact_with_nig_arrival  == '3' and dry_cough == '1') or (contact_with_nig_arrival  == '3' and diff_in_brth == '1') or
-    (contact_with_nig_arrival  == '3' and fever == '1')):
-    print(medium_risk_message)
+elif ((travel == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2') or
+      (contact_with_conf_case == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2') or
+      (individual_sick == '1' and dry_cough == '2' and diff_in_brth == '2' and fever == '2' and fatigue == '2' and sore_throat == '2') or
+      (contact_with_conf_case == '3' and dry_cough == '1') or (contact_with_conf_case == '3' and diff_in_brth == '1') or (contact_with_conf_case == '3'and fever == '1') or
+      (contact_with_nig_arrival == '3' and dry_cough == '1') or (contact_with_nig_arrival == '3' and diff_in_brth == '1') or
+      (contact_with_nig_arrival == '3' and fever == '1')):
+      print(medium_risk_message)
 
 else:
     print(low_risk_message)
